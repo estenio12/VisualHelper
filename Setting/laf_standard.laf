@@ -1,0 +1,214 @@
+TextColor         = rgb(190, 190, 190);
+TextColorHover    = rgb(250, 250, 250);
+SelectedTextColor = White;
+BorderColor       = Black;
+BackgroundColor   = rgb(80,  80,  80);
+BackgroundColorHover = rgb(100, 100, 100);
+SelectedBackgroundColor = rgb(10, 110, 255);
+SelectedBackgroundColorHover = rgb(30, 150, 255);
+
+// # Buttons
+
+Button 
+{
+    Texture         = "Assets.png" Part(0, 0, 114, 58) Middle(10, 0) Smooth;
+    TextureHover    = "Assets.png" Part(0, 117, 114, 58) Middle(10, 0) Smooth;
+    TextureDown     = "Assets.png" Part(0, 59, 114, 57) Middle(10, 0) Smooth;
+    TextureFocused  = "Assets.png" Part(0, 175, 114, 57) Middle(10, 0) Smooth;
+}
+
+// # Labels
+
+Viewport-controller-left
+{
+    Texture         = "Assets.png" Part(0, 318, 30, 29) Middle(10, 0) Smooth;
+    TextureHover    = "Assets.png" Part(0, 234, 41, 42) Middle(10, 0) Smooth;
+    TextureDown     = "Assets.png" Part(124, 233, 41, 42) Middle(10, 0) Smooth;
+    TextureFocused  = "Assets.png" Part(0, 318, 30, 29) Middle(10, 0) Smooth;
+}
+
+Viewport-controller-top
+{
+    Texture         = "Assets.png" Part(0, 318, 30, 29) Middle(10, 0) Smooth;
+    TextureHover    = "Assets.png" Part(41, 232, 42, 43) Middle(10, 0) Smooth;
+    TextureDown     = "Assets.png" Part(124, 233, 42, 43) Middle(10, 0) Smooth;
+    TextureFocused  = "Assets.png" Part(0, 318, 30, 29) Middle(10, 0) Smooth;
+}
+
+Viewport-controller-right
+{
+    Texture         = "Assets.png" Part(0, 318, 30, 29) Middle(10, 0) Smooth;
+    TextureHover    = "Assets.png" Part(0, 275, 41, 42) Middle(10, 0) Smooth;
+    TextureDown     = "Assets.png" Part(124, 233, 42, 43) Middle(10, 0) Smooth;
+    TextureFocused  = "Assets.png" Part(0, 318, 30, 29) Middle(10, 0) Smooth;
+}
+
+Viewport-controller-down
+{
+    Texture         = "Assets.png" Part(0, 318, 30, 29) Middle(10, 0) Smooth;
+    TextureHover    = "Assets.png" Part(41, 275, 42, 42) Middle(10, 0) Smooth;
+    TextureDown     = "Assets.png" Part(124, 275, 42, 42) Middle(10, 0) Smooth;
+    TextureFocused  = "Assets.png" Part(0, 318, 30, 29) Middle(10, 0) Smooth;
+}
+
+// # Icons
+
+Icon-Play
+{
+    Texture = "Assets.png" Part(0, 348, 35, 42);
+}
+
+Icon-Gear
+{
+    Texture = "Assets.png" Part(37, 348, 28, 30);
+}
+
+Icon-Plus
+{
+    Texture = "Assets.png" Part(67, 348, 20, 20);
+}
+
+Panel
+{
+    BackgroundColor = rgb(37, 37, 37);
+}
+
+ChatBox 
+{
+    TextureBackground = "Assets.png" Part(63, 146, 48, 48) Middle(16) Smooth;
+    Padding           = (3, 3, 3, 3);
+}
+
+CheckBox {
+    TextureUnchecked        = "Assets.png" Part(125, 209, 32, 32) Smooth;
+    TextureChecked          = "Assets.png" Part(219, 171, 32, 32) Smooth;
+    TextureUncheckedHover   = "Assets.png" Part(221, 35, 32, 32) Smooth;
+    TextureCheckedHover     = "Assets.png" Part(221, 1, 32, 32) Smooth;
+    TextureUncheckedFocused = "Assets.png" Part(216, 209, 32, 32) Smooth;
+    TextureCheckedFocused   = "Assets.png" Part(221, 69, 32, 32) Smooth;
+}
+
+ChildWindow {
+    TextureTitleBar        = "Assets.png" Part(1, 85, 75, 25) Middle(25, 0) Smooth;
+    Borders                = (1, 1, 1, 1);
+    DistanceToSide         = 5;
+    PaddingBetweenButtons  = 2;
+    ShowTextOnTitleButtons = false;
+    CloseButton = {
+        Texture       = "Assets.png" Part(79, 238, 15, 15) Smooth;
+        TextureHover  = "Assets.png" Part(255, 40, 15, 15) Smooth;
+        TextureDown   = "Assets.png" Part(45, 230, 15, 15) Smooth;
+    };
+    MaximizeButton = {
+        Texture       = "Assets.png" Part(255, 23, 15, 15) Smooth;
+        TextureHover  = "Assets.png" Part(267, 239, 15, 15) Smooth;
+        TextureDown   = "Assets.png" Part(62, 238, 15, 15) Smooth;
+    };
+    MinimizeButton = {
+        Texture       = "Assets.png" Part(255, 57, 15, 15) Smooth;
+        TextureHover  = "Assets.png" Part(250, 239, 15, 15) Smooth;
+        TextureDown   = "Assets.png" Part(96, 238, 15, 15) Smooth;
+    };
+}
+
+ComboBox {
+    TextureBackground = "Assets.png" Part(63, 146, 48, 48) Middle(16) Smooth;
+    TextureArrow      = "Assets.png" Part(250, 205, 32, 32) Smooth;
+    TextureArrowHover = "Assets.png" Part(219, 103, 32, 32) Smooth;
+    Padding           = (3, 3, 3, 3);
+}
+
+EditBox {
+    Texture        = "Assets.png" Part(1, 154, 60, 40) Middle(15, 0) Smooth;
+    TextureHover   = "Assets.png" Part(63, 196, 60, 40) Middle(15, 0) Smooth;
+    TextureFocused = "Assets.png" Part(1, 112, 60, 40) Middle(15, 0) Smooth;
+
+    DefaultTextColor = rgb(120, 120, 120);
+    CaretColor       = rgb(110, 110, 255);
+    Padding          = (6, 4, 6, 4);
+}
+
+Knob {
+    Borders = (2, 2, 2, 2);
+}
+
+ListBox {
+    TextureBackground = "Assets.png" Part(63, 146, 48, 48) Middle(16) Smooth;
+    Padding           = (3, 3, 3, 3);
+}
+
+ListView {
+    HeaderBackgroundColor = rgb( 95,  95,  95);
+    HeaderTextColor       = rgb(210, 210, 210);
+    Borders               = (1, 1, 1, 1);
+}
+
+MenuBar {
+    TextureBackground             = "Assets.png" Part(45, 247, 8, 6) Middle(2, 2) NoSmooth;
+    TextureItemBackground         = "Assets.png" Part(78, 105, 8, 4) Middle(2, 0, 4, 2) NoSmooth;
+    TextureSelectedItemBackground = "Assets.png" Part(113, 238, 8, 6) Middle(2, 2) NoSmooth;
+    DistanceToSide                = 5;
+}
+
+ProgressBar {
+    TextureBackground = "Assets.png" Part(1, 1, 90, 40) Middle(20, 0) Smooth;
+    TextureFill       = "Assets.png" Part(1, 43, 90, 40) Middle(16, 0) Smooth;
+    TextColorFilled   = rgb(250, 250, 250);
+}
+
+RadioButton {
+    TextureUnchecked        = "Assets.png" Part(219, 137, 32, 32) Smooth;
+    TextureChecked          = "Assets.png" Part(187, 35, 32, 32) Smooth;
+    TextureUncheckedHover   = "Assets.png" Part(187, 69, 32, 32) Smooth;
+    TextureCheckedHover     = "Assets.png" Part(253, 137, 32, 32) Smooth;
+    TextureUncheckedFocused = "Assets.png" Part(253, 103, 32, 32) Smooth;
+    TextureCheckedFocused   = "Assets.png" Part(187, 1, 32, 32) Smooth;
+}
+
+Scrollbar {
+    TextureTrack          = "Assets.png" Part(255, 1, 20, 20) Smooth;
+    TextureTrackHover     = "Assets.png" Part(284, 203, 20, 20) Smooth;
+    TextureThumb          = "Assets.png" Part(23, 230, 20, 20) Smooth;
+    TextureThumbHover     = "Assets.png" Part(306, 193, 20, 20) Smooth;
+    TextureArrowUp        = "Assets.png" Part(284, 225, 20, 20) Middle(0, 0, 20, 19) Smooth;
+    TextureArrowUpHover   = "Assets.png" Part(285, 171, 20, 20) Middle(0, 0, 20, 19) Smooth;
+    TextureArrowDown      = "Assets.png" Part(1, 230, 20, 20) Middle(0, 1, 20, 19) Smooth;
+    TextureArrowDownHover = "Assets.png" Part(306, 225, 20, 20) Middle(0, 1, 20, 19) Smooth;
+}
+
+Slider {
+    TextureTrack      = "Assets.png" Part(172, 209, 20, 45) Middle(0, 15) Smooth;
+    TextureTrackHover = "Assets.png" Part(194, 209, 20, 45) Middle(0, 15) Smooth;
+    TextureThumb      = "Assets.png" Part(253, 171, 30, 30) Smooth;
+}
+
+SpinButton {
+    TextureArrowUp        = "Assets.png" Part(284, 225, 20, 20) Middle(0, 0, 20, 19) Smooth;
+    TextureArrowUpHover   = "Assets.png" Part(285, 171, 20, 20) Middle(0, 0, 20, 19) Smooth;
+    TextureArrowDown      = "Assets.png" Part(1, 230, 20, 20) Middle(0, 1, 20, 19) Smooth;
+    TextureArrowDownHover = "Assets.png" Part(306, 225, 20, 20) Middle(0, 1, 20, 19) Smooth;
+    BorderBetweenArrows    = 0;
+}
+
+Tabs {
+    TextureTab         = "Assets.png" Part(1, 196, 60, 32) Middle(16, 0) Smooth;
+    TextureSelectedTab = "Assets.png" Part(63, 112, 60, 32) Middle(16, 0) Smooth;
+    DistanceToSide     = 8;
+}
+
+TextArea {
+    TextureBackground = "Assets.png" Part(63, 146, 48, 48) Middle(16) Smooth;
+    CaretColor        = rgb(110, 110, 255);
+    Padding           = (3, 3, 3, 3);
+}
+
+ToolTip {
+    BackgroundColor = rgb(80, 80, 80);
+    Borders         = (1, 1, 1, 1);
+    Padding         = (2, 2, 2, 2);
+}
+
+ToggleButton {
+    Texture     = "Assets.png" Part(140, 53, 45, 50) Middle(10, 0) Smooth;
+    TextureDown = "Assets.png" Part(125, 105, 45, 50) Middle(10, 0) Smooth;
+}
