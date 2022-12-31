@@ -29,11 +29,14 @@ void Playground::UpdateComponent()
                           Viewport->getSize().y);
     Camera.setSize(Viewport->getSize().x,
                    Viewport->getSize().y);
+    
 
     // # Call function
     this->ViewportMove();
     this->ViewportRendering();
     this->ViewportComponentResize();
+    this->AdjustGridOffsetBackward();
+    this->AdjustGridOffsetForward();
 }
 
 void Playground::ViewportRendering()
@@ -41,7 +44,7 @@ void Playground::ViewportRendering()
     RenderCanvas->setView(Camera);
     RenderCanvas->clear({51, 51, 51, 255});
 
-    Grid->RenderGrid();
+    RenderCanvas->draw(GridMap);
     RenderCanvas->draw(Debug);
     RenderCanvas->draw(CameraAnchor);
 
@@ -68,7 +71,24 @@ void Playground::LoadRenderCanvas()
 
 void Playground::LoadGrid()
 {
-    Grid = new PlaygroundGrid(RenderCanvas, CameraAnchor.getPosition());
+    const int GridLayout[36] =
+    {
+        0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0
+    };
+
+    if(!GridMap.load("./Setting/Teste.png", 
+                     sf::Vector2u(GRID_TEXTURE_SIZE, GRID_TEXTURE_SIZE), 
+                     GridLayout, 
+                     GRID_LAYOUT_WIDTH, 
+                     GRID_LAYOUT_HEIGHT))
+    {
+        std::cerr << "Cannot load grid texure." << std::endl;
+    }
 }
 
 void Playground::LoadCamera()
@@ -161,27 +181,27 @@ void Playground::ViewportComponentResize()
 
     // # Viewpor Button Right
     Button_MoveViewport_Right->setPosition(Viewport->getSize().x - VIEWPORT_BUTTON_SIZE,
-                                        VIEWPORT_BUTTON_SIZE);
+                                           VIEWPORT_BUTTON_SIZE);
     Button_MoveViewport_Right->setSize(VIEWPORT_BUTTON_SIZE,
-                                    Viewport->getSize().y - (VIEWPORT_BUTTON_SIZE * 2));
+                                       Viewport->getSize().y - (VIEWPORT_BUTTON_SIZE * 2));
     
     // # Viewpor Button Left
     Button_MoveViewport_Left->setPosition(INIT_POSITION,
-                                       VIEWPORT_BUTTON_SIZE);
+                                          VIEWPORT_BUTTON_SIZE);
     Button_MoveViewport_Left->setSize(VIEWPORT_BUTTON_SIZE,
-                                    Viewport->getSize().y - (VIEWPORT_BUTTON_SIZE * 2));
+                                      Viewport->getSize().y - (VIEWPORT_BUTTON_SIZE * 2));
     
     // # Viewpor Button Top
     //Btn_MoveViewport_Top->setPosition(INIT_POSITION,
       //                                VIEWPORT_BUTTON_SIZE);
     Button_MoveViewport_Top->setSize(Viewport->getSize().x,
-                                  VIEWPORT_BUTTON_SIZE);
+                                     VIEWPORT_BUTTON_SIZE);
 
     // # Viewpor Button Down
     Button_MoveViewport_Down->setPosition(INIT_POSITION,
-                                      Viewport->getSize().y - VIEWPORT_BUTTON_SIZE);
+                                          Viewport->getSize().y - VIEWPORT_BUTTON_SIZE);
     Button_MoveViewport_Down->setSize(Viewport->getSize().x,
-                                  VIEWPORT_BUTTON_SIZE);
+                                      VIEWPORT_BUTTON_SIZE);
     
 }
 
@@ -205,4 +225,64 @@ void Playground::ViewportMoveToDown()
     this->CameraAnchor.move(0, VIEWPORT_MOVE_SPEED);
 }
 
+void Playground::AdjustGridOffsetBackward()
+{
+    sf::Vector2f CalculateGridPositionLimit
+    (
+        // # X
+        ((GRID_TEXTURE_SIZE * GRID_LAYOUT_WIDTH) / 2),
+        // # Y
+        ((GRID_TEXTURE_SIZE * GRID_LAYOUT_HEIGHT) / 2)
+    );
 
+    sf::Vector2f GridPositionLimit
+    (
+        // # X
+        -(CalculateGridPositionLimit.x - (this->Viewport->getSize().x / 2) - GRID_LIMIT_SAVE),
+        // # Y
+        -(CalculateGridPositionLimit.y - (this->Viewport->getSize().y / 2) - GRID_LIMIT_SAVE)
+    );
+
+    if(CameraAnchor.getPosition().x < GridPositionLimit.x)
+    {
+        this->CameraAnchor.setPosition(GridPositionLimit.x,
+                                       CameraAnchor.getPosition().y);
+    }
+
+    if(CameraAnchor.getPosition().y < GridPositionLimit.y)
+    {
+        this->CameraAnchor.setPosition(CameraAnchor.getPosition().x,
+                                       GridPositionLimit.y);
+    }
+}
+
+void Playground::AdjustGridOffsetForward()
+{
+    sf::Vector2f CalculateGridSizeLimit
+    (
+        // # X
+        ((GRID_TEXTURE_SIZE * GRID_LAYOUT_WIDTH) / 2),
+        // # Y
+        ((GRID_TEXTURE_SIZE * GRID_LAYOUT_HEIGHT) / 2)
+    );
+
+    sf::Vector2f GridSizeLimit
+    (
+        // # X
+        (CalculateGridSizeLimit.x - (this->Viewport->getSize().x / 2) - GRID_LIMIT_SAVE),
+        // # Y
+        (CalculateGridSizeLimit.y - (this->Viewport->getSize().y / 2) - GRID_LIMIT_SAVE)
+    );
+
+    if(CameraAnchor.getPosition().x > GridSizeLimit.x)
+    {
+        this->CameraAnchor.setPosition(GridSizeLimit.x,
+                                       CameraAnchor.getPosition().y);
+    }
+
+    if(CameraAnchor.getPosition().y > GridSizeLimit.y)
+    {
+        this->CameraAnchor.setPosition(CameraAnchor.getPosition().x,
+                                       GridSizeLimit.y);
+    }
+}

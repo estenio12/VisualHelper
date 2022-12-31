@@ -10,7 +10,7 @@
 #include <TGUI/TGUI.hpp>
 #include <TGUI/Backend/SFML-Graphics.hpp>
 
-#include "../Includes/PlaygroundGrid.hpp"
+#include "../Includes/Grid.hpp"
 
 class Playground
 {
@@ -24,12 +24,12 @@ class Playground
         tgui::Button::Ptr Button_MoveViewport_Top;
         tgui::Button::Ptr Button_MoveViewport_Down;
 
-        PlaygroundGrid* Grid;
         sf::Event* WindowEvent;
         sf::RectangleShape CameraAnchor;
         sf::View Camera;
 
         sf::RectangleShape Debug;
+        Grid GridMap;
 
     private:
         const float INIT_SIZE = 300;
@@ -37,6 +37,11 @@ class Playground
         const float VIEWPORT_POSITION_Y = 40;
         const int VIEWPORT_BUTTON_SIZE = 50;
         const float VIEWPORT_MOVE_SPEED = 5;
+
+        const float GRID_TEXTURE_SIZE  = 1024;
+        const float GRID_LAYOUT_WIDTH  = 6;
+        const float GRID_LAYOUT_HEIGHT = 6;
+        const float GRID_LIMIT_SAVE    = 25;
 
     public:
         Playground(tgui::Gui*, sf::Event*, tgui::Theme& );
@@ -48,9 +53,15 @@ class Playground
         void LoadGrid();
         void LoadCamera();
         void LoadViewportButtons();
+
+    private:
         void ViewportRendering();
         void ViewportMove();
         void ViewportComponentResize();
+
+    private:
+        void AdjustGridOffsetBackward();
+        void AdjustGridOffsetForward();
 
     private:
         void ViewportMoveToRight();
