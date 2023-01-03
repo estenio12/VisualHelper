@@ -1,7 +1,7 @@
 // # #######################################
 // # 
 // # Software developed by Estenio Garcia
-// # (C) Copyright All reserved!
+// # LICENSE: MIT
 // # 
 // # #######################################
 
