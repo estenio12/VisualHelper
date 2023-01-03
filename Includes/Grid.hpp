@@ -1,3 +1,12 @@
+// # #######################################
+// # 
+// # Software developed by Estenio Garcia
+// # LICENSE: MIT
+// # 
+// # #######################################
+
+#pragma once
+
 #include <SFML/Graphics.hpp>
 
 class Grid : public sf::Drawable, public sf::Transformable

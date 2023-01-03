@@ -20,16 +20,18 @@ class PinManager
         Pin* NewConnectionOrigin;
         Pin* NewConnectionTarget;
         std::vector<std::pair<Pin*, Pin*>> PinConnections;
+        sf::RenderWindow* Render;
 
     public:
-        PinManager();
+        PinManager(sf::RenderWindow* );
         ~PinManager();
 
     private:
         void CommitConnection();
+        sf::Color GetLineColorByType(PinType ) const;
 
     public:
-        void RenderComponent(sf::RenderWindow& );
+        void RenderComponent();
         Pin::PINID GetNewPinID();
         void MakeConnection(Pin* );
         void CancelMakeConnection();

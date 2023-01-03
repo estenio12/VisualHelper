@@ -1,6 +1,6 @@
 #include "../Includes/PinManager.hpp"
 
-PinManager::PinManager(){}
+PinManager::PinManager(sf::RenderWindow* Render):Render(Render){}
 
 PinManager::~PinManager()
 {
@@ -39,8 +39,7 @@ void PinManager::CommitConnection()
 
 Pin::PINID PinManager::GetNewPinID()
 {
-    Pin::PINID NID = std::to_string(++PINIDMANAGER);
-    return NID;
+    return std::to_string(++PINIDMANAGER);
 }
 
 void PinManager::CutConnection(Pin* PinTarget)
@@ -52,5 +51,50 @@ void PinManager::CutConnection(Pin* PinTarget)
         {
             PinConnections.erase(PinConnections.begin() + i);
         }
+    }
+}
+
+sf::Color PinManager::GetLineColorByType(PinType Type) const
+{
+    switch (Type)
+    {
+        case PinType::CHAR:
+            return sf::Color();
+            break;
+
+        case PinType::FLOAT:
+            return sf::Color();
+            break;
+
+        case PinType::INT:
+            return sf::Color();
+            break;
+
+        case PinType::STRING:
+            return sf::Color();
+            break;
+    }
+
+    return sf::Color::White;
+}
+
+void PinManager::RenderComponent()
+{
+    for(int i = 0; i < PinConnections.size(); i++)
+    {
+        sf::Vertex TempLine[2]
+        {
+            PinConnections[i].first->GetPosition(),
+            PinConnections[i].second->GetPosition()
+        };
+
+        sf::Color TypeColor = 
+            this->GetLineColorByType(
+                PinConnections[i].first->GetPinType());
+        
+        TempLine[0].color = TypeColor;
+        TempLine[1].color = TypeColor;
+
+        Render->draw(TempLine, 2, sf::Lines);
     }
 }
