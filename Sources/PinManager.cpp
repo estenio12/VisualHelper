@@ -59,19 +59,19 @@ sf::Color PinManager::GetLineColorByType(PinType Type) const
     switch (Type)
     {
         case PinType::CHAR:
-            return sf::Color();
+            return sf::Color(188, 170, 77);
             break;
 
         case PinType::FLOAT:
-            return sf::Color();
+            return sf::Color(59, 170, 29);
             break;
 
         case PinType::INT:
-            return sf::Color();
+            return sf::Color(92, 206, 189);
             break;
 
         case PinType::STRING:
-            return sf::Color();
+            return sf::Color(206, 92, 185);
             break;
     }
 
