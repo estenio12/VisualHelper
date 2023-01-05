@@ -48,4 +48,7 @@ class Pin : public Object2D
         TYPEIO GetTypeIO() { return TypeIO; }
         template<typename T> T GetData();
 
+    public:
+        void UpdateObject() override;
+        void RenderObject() override;
 };

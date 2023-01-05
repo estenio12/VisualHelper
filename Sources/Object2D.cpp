@@ -44,3 +44,13 @@ void Object2D::SetPosition(sf::Vector2f Position)
 }
 
 void Object2D::SetType(const TypeObject type){this->Type = type;}
+
+void Object2D::SetWindowEvent(sf::Event* event)
+{
+    this->WindowEvent = event;
+}
+
+void Object2D::SetRenderWindow(sf::RenderWindow* Render)
+{
+    this->Render = Render;
+}

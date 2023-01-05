@@ -23,3 +23,12 @@ template<typename T> T Pin::GetData()
     }
 }
 
+void UpdateObject()
+{
+    
+}
+
+void RenderObject()
+{
+
+}

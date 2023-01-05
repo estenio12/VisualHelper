@@ -81,7 +81,7 @@ void Playground::LoadGrid()
         0, 0, 0, 0, 0, 0
     };
 
-    if(!GridMap.load("./Setting/Teste.png", 
+    if(!GridMap.load("./Setting/Grid.png", 
                      sf::Vector2u(GRID_TEXTURE_SIZE, GRID_TEXTURE_SIZE), 
                      GridLayout, 
                      GRID_LAYOUT_WIDTH, 

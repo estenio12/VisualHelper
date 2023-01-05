@@ -26,8 +26,14 @@ class Object2D
         bool Clicked = false;
 
     public:
-        virtual void UpdateObject(float deltatime, sf::Event event) = 0;
-        virtual void RenderObject(sf::RenderWindow* ) = 0;
+        sf::Event* WindowEvent;
+        sf::RenderWindow* Render;
+
+    public:
+        void SetWindowEvent(sf::Event* );
+        void SetRenderWindow(sf::RenderWindow* );
+        virtual void UpdateObject() = 0;
+        virtual void RenderObject() = 0;
         void CheckClicked(sf::Event& );
 
     public:
