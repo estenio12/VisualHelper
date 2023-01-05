@@ -12,6 +12,7 @@
 #include <utility>
 
 #include "../Includes/Pin.hpp"
+#include "../Helpers/DataDefinions.hpp"
 
 class PinManager
 {
