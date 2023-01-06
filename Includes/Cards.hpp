@@ -28,6 +28,10 @@ class Cards : public Object2D
         std::string CardName;
 
     private:
+        sf::Vector2f MouseOffset;
+        sf::Vector2f MouseCoordenates;
+
+    private:
         const float MAX_SIZE_HEIGHT_TITLEBAR = 20;
 
     public:
@@ -43,6 +47,8 @@ class Cards : public Object2D
         void RenderTitleBar();
         void RenderTitleBarText();
         void RenderBackgroundCard();
+
+        void DragCard();
 
     protected:
         // # @param 1 = Type of pin (float, int, etc...)

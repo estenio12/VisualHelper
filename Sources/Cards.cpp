@@ -25,6 +25,9 @@ void Cards::CreatePin(PinType Type, std::string Name, Pin::TYPEIO typeio)
     TmpPin->SetName(Name);
     TmpPin->SetTypeIO(typeio);
 
+    TmpPin->SetWindowEvent(this->WindowEvent);
+    TmpPin->SetRenderWindow(this->Render);
+
     if(typeio == Pin::TYPEIO::INPUT)
     {
         this->InputPin.push_back(TmpPin);
@@ -68,6 +71,7 @@ void Cards::UpdateObject()
     this->UpdateBackgroundCard();
     this->UpdatePinListInput();
     this->UpdatePinListOutput();
+    this->DragCard();
     this->UpdateComponent();
 }
 
@@ -140,13 +144,35 @@ void Cards::UpdatePinListOutput()
 {
     int length = (this->BackgroundCard.getPosition().y + 
                   this->BackgroundCard.getSize().y) / 
-                  this->InputPin.size();
+                  this->OutputPin.size();
     
-    for(int i = 0; i < this->InputPin.size(); i++)
+    for(int i = 0; i < this->OutputPin.size(); i++)
     {
-        this->InputPin[i]->SetPosition(sf::Vector2f(
+        this->OutputPin[i]->SetPosition(sf::Vector2f(
             (this->BackgroundCard.getPosition().x + this->BackgroundCard.getSize().x ) - (Config::DefaultPinRadius / 2),
             (this->BackgroundCard.getPosition().y + length) - (Config::DefaultPinRadius / 2)));
+    }
+}
+
+void Cards::DragCard()
+{
+    if(this->IsClicked())
+    {
+        this->MouseOffset.x = (this->WindowEvent->mouseButton.x - this->GetPosition().x) - this->GetSize().x / 2;
+        this->MouseOffset.y = (this->WindowEvent->mouseButton.y - this->GetPosition().y) - this->GetSize().y / 2;
+    
+        if(this->WindowEvent->MouseMoved)
+        {
+            this->MouseCoordenates.x = this->WindowEvent->mouseMove.x;
+            this->MouseCoordenates.y = this->WindowEvent->mouseMove.y;
+        }
+
+        this->SetPosition(
+            sf::Vector2f
+            (
+                this->MouseCoordenates.x - this->MouseOffset.x,
+                this->MouseCoordenates.y - this->MouseOffset.y
+            ));
     }
 }
 

@@ -50,6 +50,7 @@ namespace Config
     static sf::Color DefaultTextColor = sf::Color::White;
     static sf::Color DefaultBgCardColor = sf::Color(67, 67, 67, 90);
     static sf::Color DefaultBorderCardColor = sf::Color(20, 20, 20);
+    static sf::Color DefaultPinUnconnectedColor = sf::Color(131, 131, 131);
 
     // # 
     static float DefaultPinRadius = 10.f;
